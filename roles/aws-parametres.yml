@@ -29,5 +29,12 @@
         - {name: "dev.user.MONGO_URL", value: "mongodb://mongodb-dev.khajavali1995.online:27017/users" }
         - {name: "dev.user.REDIS_HOST", value: "redis-dev.khajavali1995.online" }
 
-      # passwords should never be kept in this repos, those shoud be created manually, but for lab perpouse doing here it self
+    # passwords should never be kept in this repos, those shoud be created manually, but for lab perpouse doing here it self
+    - name: create secrets
+      community.aws.aws_ssm_parameter_store:
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
+        region: us-east-1
+        string_type: "SecureString"
+      loop:
         - {name: "dev.payment.AMPQ_PASS", value "roboshop123" }
