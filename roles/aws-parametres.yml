@@ -1,5 +1,5 @@
 - name: create parametres in ansible
-  hosts: local host
+  hosts: localhost
   connection: local
   tasks:
     - name: create or update key/value pair in aws ssm parameter store
